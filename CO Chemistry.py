@@ -42,7 +42,7 @@ def NL97(y, t, k0, nC, n0, beta, gammaCO, k_coll_e, k_coll_HI, k_coll_He, k_coll
     xH2 = y[1]
     
     # Calculate the derivative
-    nH2 = n0 * xH2
+    nH2 = n0 * xH2 / 2
     xHI = 1 - xH2
     dy0dt = k0*nC*nH2*beta - gammaCO*nCO
     
@@ -67,7 +67,7 @@ def NL97_c(y, t, k0, nC, n0, beta, gammaCO, k_coll_e, k_coll_HI, k_coll_He, k_co
     xH2 = y[1]
     
     # Calculate the derivative
-    nH2 = n0 * xH2
+    nH2 = n0 * xH2 / 2
     xHI = 1 - xH2
     dy0dt = k0*nC*nH2*beta
     
@@ -92,7 +92,7 @@ def NL97_d(y, t, k0, nC, n0, beta, gammaCO, k_coll_e, k_coll_HI, k_coll_He, k_co
     xH2 = y[1]
     
     # Calculate the derivative
-    nH2 = n0 * xH2
+    nH2 = n0 * xH2 / 2
     xHI = 1 - xH2
     dy0dt = gammaCO # Absolute value, same below
     
@@ -220,7 +220,7 @@ gammaCHx = 5e-10 * G0 * np.exp(-2.5*AV)
 gammaCO = 1e-10 * G0 * np.exp(-2.5*AV)
 beta = k1*xO / (k1*xO + gammaCHx / n)
 nC = n0 * xC
-# nH2 = n0 * xH2
+# nH2 = n0 * xH2 / 2
 k_coll_e = 4.49e-9 * T**0.11 * np.exp(-101858/T) # k_coll_e-: The collisional dissociation rate of e-, as given in Table A1 8-11 of Gloevr & Abel 2008.
 k_coll_HI = 6.67e-12 * T**0.5 * np.exp(-(1+63593/T))# k_coll_HI: The collisional dissociation rate of H.
 k_coll_He = 10**(-27.029 + 3.801*np.log10(T) - 29487/T) # k_coll_He: The collisional dissociation rate of He.
