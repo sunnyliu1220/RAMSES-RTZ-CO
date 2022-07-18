@@ -287,4 +287,16 @@ pp.savefig(fig_nCO)
 pp.savefig(fig_xH2)
 pp.close()
 
+# Save graph data as npz
+to_save = {}
+to_save['Time_Myr'] = t_Myr
+to_save['nCO_cm^-3_semi_implicit'] = y_semi[0,:]
+to_save['nCO_cm^-3_simple_explicit'] = y[0,:]
+to_save['nCO_cm^-3_scipy'] = y_scipy[0,:]
+to_save['xH2_semi_implicit'] = y_semi[0,:]
+to_save['xH2_simple_explicit'] = y[0,:]
+to_save['xH2_scipy'] = y_scipy[0,:]
+
+np.savez('co_chem_test.npz', **to_save)
+
 print ('saved')
